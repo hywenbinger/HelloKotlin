@@ -61,3 +61,18 @@ class Person(name: String, age: Int) {
         }
     var age = age
 }
+
+/**
+ * 类的【构造函数】和【init函数】
+ */
+class Dog constructor(var name: String, msg: String) {
+    init {
+        println("$name message is $msg")
+    }
+}
+
+/**
+ * Kotlin推荐使用【主构造器 + 默认参数】的形式实现构造函数
+ * 【@JvmOverloads】：主构造器默认参数在Java代码中可以以重载的形式调用
+ */
+class Cat @JvmOverloads constructor(var age: Int, var name: String = "unknown")
