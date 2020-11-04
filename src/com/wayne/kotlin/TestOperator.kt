@@ -1,7 +1,7 @@
 package com.wayne.kotlin
 
 /**
- * 操作符、运算符
+ * 操作符、运算符重载
  */
 fun main() {
     val s = "HelloWorld"
