@@ -10,6 +10,23 @@ fun main() {
     println(s - "World")
 }
 
+/**
+ * 字符串移除
+ */
 infix operator fun String.minus(other: String): String {
     return this.replace(other, "")
+}
+
+/**
+ * 字符串连加
+ */
+infix operator fun String.times(count: Int): String {
+    return (1..count).joinToString("") { this }
+}
+
+/**
+ * 强转的扩展方法
+ */
+fun <T> Any.safeAs(): T? {
+    return this as? T
 }

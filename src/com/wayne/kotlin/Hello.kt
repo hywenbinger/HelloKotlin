@@ -1,7 +1,7 @@
 package com.wayne.kotlin
 
 
-fun main(args: Array<String>) {
+fun main() {
     println("HelloKotlin")
 }
 
