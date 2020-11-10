@@ -5,7 +5,7 @@ package com.wayne.kotlin.`object`
  * 构造方法          默认无参构造                       属性作为参数
  * 字段             字段私有，getter/setter公开         属性
  * 继承性           可继承和被继承                      不可被继承
- * component       无                                 相等性、解构
+ * component       无                                相等性、解构
  */
 fun main() {
     val data1 = MyData(age = 20, name = "wayne")

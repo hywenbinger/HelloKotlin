@@ -4,15 +4,10 @@ import java.io.File
 
 /**
  * 几个常用的高阶函数
- *      let
- *      apply
- *      run
- *      with
- *      also
- *      repeat
- *      takeIf
- *      takeUnless
- *      use
+ *      let      val r = X.let{ x -> R }
+ *      run      val r = X.let{ this: X -> R }
+ *      also     val r = X.also{ x -> Unit }
+ *      apply    val r = X.apply{ this: X -> Unit }
  */
 fun main() {
 
@@ -24,37 +19,17 @@ fun main() {
  *      2.return block的返回值
  */
 fun testLet() {
-    val result = "testLetFun".let {
-        println(it)
-        println(it)
-        100
-    }
-    println(result)
-
-    //结果：
-    //testLetFun
-    //testLetFun
-    //100
-}
-
-/**
- * apply
- *      1.block内可以调用receiver的任意函数
- *      2.return receiver
- */
-fun testApply() {
     val list = mutableListOf(1)
-    val value = list.apply {
-        add(2)
-        add(3)
-        remove(3)
+    val value = list.let {
+        it.add(2)
+        100
     }
     println(list)
     println(value)
 
     //结果：
     //[1, 2]
-    //[1, 2]
+    //100
 }
 
 /**
@@ -66,8 +41,6 @@ fun testRun() {
     val list = mutableListOf(1)
     val value = list.run {
         add(2)
-        add(3)
-        remove(3)
         100
     }
     println(list)
@@ -76,28 +49,6 @@ fun testRun() {
     // 结果：
     // [1, 2]
     // 100
-}
-
-/**
- * with
- *      1.block内可以调用receiver的任意函数
- *      2.return block的返回值
- *      3.和 T.run{} 功能类似，不过它不是extension函数
- */
-fun testWith() {
-    val list = mutableListOf(1)
-    val value = with(list){
-        add(2)
-        add(3)
-        remove(3)
-        100
-    }
-    println(list)
-    println(value)
-
-    //结果：
-    //[1, 2]
-    //100
 }
 
 /**
@@ -123,13 +74,56 @@ fun testOtherRun() {
  *      2.return receiver
  */
 fun testAlso() {
-    val also = "test".also {
-        it + "test"
+    val list = mutableListOf(1)
+    val value = list.also {
+        it.add(2)
     }
-    println(also)
+    println(list)
+    println(value)
 
     //结果：
-    //test
+    //[1, 2]
+    //[1, 2]
+}
+
+/**
+ * apply
+ *      1.block内可以调用receiver的任意函数
+ *      2.return receiver
+ */
+fun testApply() {
+    val list = mutableListOf(1)
+    val value = list.apply {
+        add(2)
+    }
+    println(list)
+    println(value)
+
+    //结果：
+    //[1, 2]
+    //[1, 2]
+}
+
+/**
+ * with
+ *      1.block内可以调用receiver的任意函数
+ *      2.return block的返回值
+ *      3.和 T.run{} 功能类似，不过它不是extension函数
+ */
+fun testWith() {
+    val list = mutableListOf(1)
+    val value = with(list) {
+        add(2)
+        add(3)
+        remove(3)
+        100
+    }
+    println(list)
+    println(value)
+
+    //结果：
+    //[1, 2]
+    //100
 }
 
 /**
