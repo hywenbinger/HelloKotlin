@@ -9,11 +9,11 @@ import java.lang.Exception
  */
 fun main() {
 
-//    try {
-//        val a = 1 / 0
-//    } catch (t: Throwable) {
-//        println("message is ${t.message}")
-//    }
+    try {
+        val a = 1 / 0
+    } catch (t: Throwable) {
+        println("message is ${t.message}")
+    }
 
     val result = try {
         10 / 0
